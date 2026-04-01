@@ -1,8 +1,40 @@
 # AtomicAPIs MCP Server
 
+[![MCP Server](https://img.shields.io/badge/MCP-Server-blue)](https://modelcontextprotocol.io)
+[![.NET 9](https://img.shields.io/badge/.NET-9.0-purple)](https://dotnet.microsoft.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Tools](https://img.shields.io/badge/Tools-17-orange)]()
+
 A [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server that exposes 17 production-grade micro-API tools for AI assistants. Built with .NET 9 and the official [ModelContextProtocol](https://www.nuget.org/packages/ModelContextProtocol) SDK.
 
 MCP allows AI assistants like Claude to invoke these tools natively during conversation — no HTTP requests, API keys, or boilerplate needed on the client side.
+
+## Quick Install
+
+### One-click for Claude Desktop
+
+Add this to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "atomicapis": {
+      "command": "dotnet",
+      "args": ["run", "--project", "/path/to/atomicapis-mcp-server/src"]
+    }
+  }
+}
+```
+
+### One-click for Claude Code
+
+```bash
+claude mcp add atomicapis -- dotnet run --project /path/to/atomicapis-mcp-server/src
+```
+
+### One-click for Kiro
+
+[![Add to Kiro](https://img.shields.io/badge/Add%20to-Kiro-blue?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiPjxwb2x5Z29uIHBvaW50cz0iMTMgMiAzIDE0IDEyIDE0IDExIDIyIDIxIDEwIDEyIDEwIDEzIDIiLz48L3N2Zz4=)](https://github.com/Benzene66/atomicapis-mcp-server)
 
 ## Tools
 
@@ -46,28 +78,7 @@ cd src
 dotnet run
 ```
 
-The server communicates over stdio using the MCP JSON-RPC protocol. It is designed to be launched by an MCP-compatible client (e.g., Claude Desktop, Claude Code, or any MCP host).
-
-### Configure with Claude Desktop
-
-Add this to your Claude Desktop configuration (`claude_desktop_config.json`):
-
-```json
-{
-  "mcpServers": {
-    "atomicapis": {
-      "command": "dotnet",
-      "args": ["run", "--project", "/path/to/atomicapis-mcp-server/src"]
-    }
-  }
-}
-```
-
-### Configure with Claude Code
-
-```bash
-claude mcp add atomicapis -- dotnet run --project /path/to/atomicapis-mcp-server/src
-```
+The server communicates over stdio using the MCP JSON-RPC protocol. It is designed to be launched by an MCP-compatible client (e.g., Claude Desktop, Claude Code, Kiro, or any MCP host). See [Quick Install](#quick-install) above for configuration.
 
 ## Architecture
 
